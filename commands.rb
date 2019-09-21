@@ -118,6 +118,23 @@ class ListInterpreter
 	end
 	return true
     end
+    def _test_1
+	puts @listMap[@commandMap["listName"]].select{|elem| elem[-1] == "e"}.inspect
+	return true
+    end
+    def _test_2
+        puts @listMap[@commandMap["listName"]].select{|elem| ((elem.length > 3 && elem.length < 6) || elem.length > 7)}.inspect
+        return true
+    end
+    def _test_3
+        puts "NOT YET IMPLMENTED...."
+	return true
+    end
+    def _test_4
+        puts @listMap[@commandMap["listName"]].select{ |elem| elem.include? @commandMap["args"]}.inspect
+        return true
+    end
+
     def verifyCommand(arg)
       puts "verifing: " + arg
       return true unless ! @validCommands.include?(arg)
