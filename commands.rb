@@ -173,7 +173,13 @@ class ListInterpreter
 
     # upcase toggles IS_UPCASE between true and false
     def _upcase
-      @IS_UPCASE ? @IS_UPCASE = false : @IS_UPCASE = true
+      if @IS_UPCASE
+	@IS_UPCASE = false
+	puts "Disabled upcase mode"
+      else
+	@IS_UPCASE = true
+	puts "Enabled upcase mode"
+      end
       return true
     end
 
@@ -218,7 +224,7 @@ class ListInterpreter
       @listMap[@commandMap["listName"]] = @listMap[@commandMap["listName"]].concat @commandMap["args"].split(",").map(&:strip)
       outputString = "Added "
       @commandMap["args"].split(",").each {|elem| outputString = outputString + "\"" + elem + "\" " }
-      outputString += "to the list"
+      outputString += "to " + @commandMap["listName"]
       puts outputString
       return true
     end
